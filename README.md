@@ -39,11 +39,11 @@ A live, auto-updating line chart widget for SAP Digital Manufacturing POD 2.0. P
 3. Go to **Extensions** tab
 4. Click **Create**
 5. Fill in:
-   - **Name**: Call Production Process (or your preferred name)
-   - **Namespace**: `custom/callppd`
-   - **Source Code**: Upload the ZIP file
+   - **Name**: Indicator Chart (or your preferred name)
+   - **Namespace**: `custom/pod2/indicatorchart`
+   - **Source Code**: Browse and Select the ZIP file
 6. Click **Upload**
-7. The widget appears immediately in POD Designer under **Custom Widgets**
+7. The widget appears immediately in Manage PODs 2.0 under **Custom Widgets** on a POD edit mode
 4. Drag **Indicator Chart** onto your POD canvas and configure the properties below
 
 > ⚠️ The ZIP must contain `extension.json` at its root. The release ZIP is pre-packaged correctly — don't re-zip.
