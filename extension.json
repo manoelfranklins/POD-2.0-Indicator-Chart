@@ -1,0 +1,9 @@
+{
+    "widgets": [
+        {
+            "modulePath": "custom/pod2/indicatorchart/widget/IndicatorChart",
+            "type": "custom.pod2.indicatorchart.widget.IndicatorChart"
+        }
+    ],
+    "actions": []
+}

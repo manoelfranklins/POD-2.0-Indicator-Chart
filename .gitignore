@@ -1,0 +1,17 @@
+# Node
+node_modules/
+package.json
+package-lock.json
+
+# Generation scripts
+generate_readme.js
+
+# Word documents
+*.docx
+~$*.docx
+
+# Old versioned ZIPs
+IndicatorChart_deployment v*.zip
+
+# Windows thumbnail cache
+Thumbs.db
