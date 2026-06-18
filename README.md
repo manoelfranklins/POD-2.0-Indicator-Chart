@@ -28,15 +28,22 @@ A live, auto-updating line chart widget for SAP Digital Manufacturing POD 2.0. P
 
 > *Two instances side by side — Temperature trending down (red, below threshold) and Moisture rising (green, within range)*
 
-<!-- Add your screenshot here -->
+<img width="1430" height="491" alt="image" src="https://github.com/user-attachments/assets/cfa74660-1583-4b6d-9785-0952e0de5dd3" />
 
 ---
 
 ## 🚀 Installation
 
-1. Download `IndicatorChart_deployment.zip` from [Releases](../../releases)
-2. In your SAP DM tenant: **Production Control → Extension Center → Create → Upload Extension Package**
-3. Upload the ZIP — the widget appears immediately in POD Designer under **Custom Widgets**
+1. Download `IndicatorChart_deployment.zip` 
+2. Navigate to **Manage PODs 2.0** app
+3. Go to **Extensions** tab
+4. Click **Create**
+5. Fill in:
+   - **Name**: Call Production Process (or your preferred name)
+   - **Namespace**: `custom/callppd`
+   - **Source Code**: Upload the ZIP file
+6. Click **Upload**
+7. The widget appears immediately in POD Designer under **Custom Widgets**
 4. Drag **Indicator Chart** onto your POD canvas and configure the properties below
 
 > ⚠️ The ZIP must contain `extension.json` at its root. The release ZIP is pre-packaged correctly — don't re-zip.
@@ -46,6 +53,8 @@ A live, auto-updating line chart widget for SAP Digital Manufacturing POD 2.0. P
 ## ⚙️ Configuration
 
 All properties are set in POD Designer's property panel. Changes take effect without a page reload.
+
+<img width="325" height="696" alt="image" src="https://github.com/user-attachments/assets/c5e57868-d7e1-4548-9b89-2a2ba8c993d0" />
 
 ### General
 
@@ -109,7 +118,8 @@ The widget extracts the numeric output value in this priority order:
 4. `aq` as a single object → `value` or `defaultValue`
 5. First numeric-looking field at response root (fallback)
 
-> Your process needs to return a numeric value in any of these locations for the chart to update. Non-numeric values are displayed in the KPI label but don't add a data point to the chart.
+> Your process needs to return a numeric value in any of these locations for the chart to update.
+> Non-numeric values are displayed in the KPI label but don't add a data point to the chart.
 
 ---
 
@@ -128,37 +138,6 @@ The widget extracts the numeric output value in this priority order:
 │   └── i18n_ja.properties
 └── IndicatorChart_deployment.zip
 ```
-
----
-
-## 🛠️ Local Development
-
-Edit the widget and re-package:
-
-```powershell
-# From the 20indicatorChart folder
-Compress-Archive -Path extension.json,widget,i18n `
-    -DestinationPath IndicatorChart_deployment.zip -Force
-```
-
-Then re-upload to Extension Center and reload your POD.
-
-### Adding a New Property
-
-1. Add key + default to `getDefaultConfig()` → `properties`
-2. Add fallback return in `getPropertyValue(sName)`
-3. Handle live update in `setPropertyValue(sName, vValue)` if needed
-4. Add a `WidgetProperty` entry in `getProperties()`
-5. Add `property.<name>` and `property.<name>.desc` keys to all 5 i18n files
-
-### How the Hover Tooltip Works
-
-After every `#renderChart()` call, the pixel state is saved with `ctx.getImageData()`. On `mousemove`, the snapshot is restored with `putImageData` (no redraw, no flicker), and the tooltip is drawn on top. On `mouseleave`, the snapshot is restored to clear it.
-
-### How Threshold Colors Propagate
-
-The active color is written as a CSS custom property (`--indicator-accent`) on the root `VBox` DOM node. CSS rules use `var(--indicator-accent)` — so SAPUI5 child control re-renders never lose the color, because the custom property lives on the root (which SAPUI5 never replaces).
-
 ---
 
 ## 🌍 i18n
@@ -190,4 +169,10 @@ To add a language: copy `i18n_en.properties` → `i18n_<ISO-639-1>.properties`, 
 
 ## 📄 License
 
-MIT © Manoel Costa
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 👨‍💻 Author
+
+Manoel Costa http://manoelcosta.com/
+
+Disclaimer: This is a community extension and is not officially supported by SAP. Use at your own discretion.
