@@ -52,7 +52,7 @@ A live, auto-updating line chart widget for SAP Digital Manufacturing POD 2.0. P
 
 ## ⚙️ Configuration
 
-All properties are set in POD Designer's property panel. Changes take effect without a page reload.
+All properties are set in Manage PODs 2.0's property panel. Changes take effect without a page reload.
 
 <img width="325" height="696" alt="image" src="https://github.com/user-attachments/assets/c5e57868-d7e1-4548-9b89-2a2ba8c993d0" />
 
